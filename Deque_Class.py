@@ -1,16 +1,16 @@
 class Deque(object):
 
-    def __init(self):
-        items = []
+    def __init__(self):
+        self.items = []
 
     def size(self):
         return len(self.items)
 
     def isEmpty(self):
-        return self.items.size() == 0
+        return self.size() == 0
 
     def pushFront(self, item):
-        self.items.append(0, item)
+        self.items.insert(0, item)
 
     def pushRear(self, item):
         self.items.append(item)
@@ -20,3 +20,19 @@ class Deque(object):
 
     def popRear(self):
         return self.items.pop(self.size() - 1)
+
+
+####################################
+#   Test code
+####################################
+
+d = Deque()
+
+print(d.size())
+
+d.pushRear('world')
+d.pushFront('there')
+d.pushFront('hello')
+
+while not d.isEmpty():
+    print(d.popRear())
