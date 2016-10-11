@@ -21,6 +21,13 @@ class Deque(object):
     def popRear(self):
         return self.deque.pop()
 
+    def peekFront(self):
+    	return self.deque(0)
+
+    def peekRead(self):
+    	return self.deque(self.size() - 1)
+
+
 
 class Stack(Deque):
 
