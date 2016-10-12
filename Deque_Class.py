@@ -1,3 +1,14 @@
+#######################################################################
+#
+#   -- Deque Class
+#
+#   Implements a Deque data structure.
+#
+#   Alan Rosenthal
+#   October 2016
+#
+#######################################################################
+
 class Deque(object):
 
     def __init__(self):
@@ -21,18 +32,51 @@ class Deque(object):
     def popRear(self):
         return self.items.pop(self.size() - 1)
 
+    def peekFront(self):
+        return self.items[0]
+
+    def peekRear(self):
+        return self.items[self.size() - 1]
+
+    def dump(self):
+        n = 0
+        while n < self.size():
+            print(n, self.items[n])
+            n += 1
+
 
 ####################################
 #   Test code
 ####################################
 
-d = Deque()
+class TestDeque(object):
 
-print(d.size())
+    def test(self):
+        d = Deque()
 
-d.pushRear('world')
-d.pushFront('there')
-d.pushFront('hello')
+        d.isEmpty() == True
+        assert d.size() == 0
 
-while not d.isEmpty():
-    print(d.popRear())
+        d.pushFront('hello')
+        d.pushRear('there')
+        d.pushRear('world')
+        assert d.isEmpty() == False
+        assert d.size() == 3
+
+        assert d.peekFront() == 'hello'
+        assert d.peekRear() == 'world'
+
+        assert d.popFront() == 'hello'
+        assert d.popFront() == 'there'
+        assert d.popFront() == 'world'
+
+        return True
+
+
+###################################
+#   Main Program
+###################################
+
+t = TestDeque()
+if t.test():
+    print('all tests have succeeded :)')
