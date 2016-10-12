@@ -1,3 +1,14 @@
+#######################################################################
+#
+#   -- Stack Class --
+#
+#   Implements a Stack data structure.
+#
+#   Alan Rosenthal
+#   October 2016
+#
+#######################################################################
+
 class Stack(object):
 
     def __init__(self):
@@ -16,15 +27,52 @@ class Stack(object):
         return self.items.pop()
 
     def peek(self):
-        return self.items(self.size() - 1)
+        return self.items[self.size() - 1]
+
+    def clear(self):
+        self.items = []
+
+    def dump(self):
+        if self.size() == 0:
+            print('dump stack - ', 'Stack is empty')
+        else:
+            n = 0
+            for i in self.items:
+                print('dump stack - ', '[' + str(n) + ']', i)
+                n += 1
 
 
+#######################################################################
+#   Test Class
+#######################################################################
 
-s = Stack()
+class TestStack(object):
 
-s.push('alan')
-s.push('bill')
-s.push('chuck')
+    def test(self):
 
-while not s.isEmpty():
-    print(s.pop())
+        s = Stack()
+
+        assert s.isEmpty() == True
+        assert s.size() == 0
+
+        for i in range(100):
+            s.push(i)
+        assert s.peek() == 99
+        assert s.size() == 100
+
+        for i in range(99):
+            s.pop()
+        assert s.pop() == 0
+
+        assert s.isEmpty() == True
+        assert s.size() == 0
+
+        print('All tests have succeeeded :)')
+        return True
+
+#######################################################################
+#   Main
+#######################################################################
+
+t = TestStack()
+t.test()

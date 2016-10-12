@@ -1,6 +1,6 @@
 #######################################################################
 #
-#   -- Deque Class
+#   -- Deque Class --
 #
 #   Implements a Deque data structure.
 #
@@ -39,15 +39,18 @@ class Deque(object):
         return self.items[self.size() - 1]
 
     def dump(self):
-        n = 0
-        while n < self.size():
-            print(n, self.items[n])
-            n += 1
+        if self.size() == 0:
+            print('dump deque - ', 'Deque is empty')
+        else:
+            n = 0
+            for i in self.items:
+                print('dump deque - ', '[' + str(n) + ']', i)
+                n += 1
 
 
-####################################
+#######################################################################
 #   Test code
-####################################
+#######################################################################
 
 class TestDeque(object):
 
@@ -70,12 +73,13 @@ class TestDeque(object):
         assert d.popFront() == 'there'
         assert d.popFront() == 'world'
 
+        print('All tests have succeeded :)')
         return True
 
 
-###################################
+#######################################################################
 #   Main Program
-###################################
+#######################################################################
 
 t = TestDeque()
 if t.test():
