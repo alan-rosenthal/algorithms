@@ -27,12 +27,33 @@ class SingleLinkedList(Node):
         self.current = new_node
 
     def get_first(self):
-        self.current = self.head
-        return self.current.data
+        if self.head == None:
+            self.current = None
+            data = None
+        else:
+            self.current = self.head
+            data = self.current.data
+
+        return data
 
     def get_next(self):
-        self.current = self.current.next
-        return self.current.data
+        if self.current == None:
+            data = None
+        else:
+            self.current = self.current.next
+            data = self.current.data
+
+        return data
+
+    def get_last(self):
+        if self.tail == None:
+            self.current = None
+            data = None
+        else:
+            self.current = self.tail
+            data = self.current.data
+
+        return data
 
 
 class TestIt(object):
@@ -56,3 +77,15 @@ class TestIt(object):
         assert ll.get_first() == 'hello'
         assert ll.get_next() == 'there'
         assert ll.get_next() == 'world'
+
+    def test_four(self):
+        ll = SingleLinkedList()
+        assert ll.get_first() == None
+        assert ll.get_next() == None
+        assert ll.get_last() == None
+
+        ll.append('hello there, world')
+        assert ll.get_first() == 'hello there, world'
+        assert ll.get_next() == None
+        # assert ll.get_last() == 'hello there, world'
+        # assert ll.get_next() == None
