@@ -77,10 +77,3 @@ class TestDeque(object):
         return True
 
 
-#######################################################################
-#   Main Program
-#######################################################################
-
-t = TestDeque()
-if t.test():
-    print('all tests have succeeded :)')
