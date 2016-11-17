@@ -9,6 +9,8 @@
 #
 #######################################################################
 
+import unittest
+
 class Stack(object):
 
     def __init__(self):
@@ -46,45 +48,49 @@ class Stack(object):
 #   PYTEST Class
 #######################################################################
 
-class TestStack(object):
+class TestIt(unittest.TestCase):
 
     def test_basic(self):
         s = Stack()
-        assert s.isEmpty() == True
-        assert s.size() == 0
+        self.assertTrue( s.isEmpty(), 'An empty stack should test as empty')
+        self.assertEqual(s.size(), 0, 'An empty stack should have size of zero')
 
     def test_1_item(self):
         s = Stack()
         s.push('hello there, world')
-        assert s.isEmpty() == False
-        assert s.size() == 1
+        self.assertFalse(s.isEmpty(), 'A stack with 1 items is not empty')
+        self.assertEqual(s.size(), 1, 'A stack with 1 item has a size of 1')
 
         s.clear()
-        assert s.isEmpty() == True
-        assert s.size() == 0
+        self.assertTrue(s.isEmpty(), 'A stack that was just cleared should be empty')
+        self.assertEqual(s.size(), 0, 'A stack that was just cleared should have size 0')
 
     def test_3(self):
         s = Stack()
         s.push('hello')
         s.push('there')
         s.push('world')
-        assert s.size() == 3
-        assert s.isEmpty() == False
+        self.assertEqual(s.size(), 3, 'A stack with 3 items should have size of 3')
+        self.assertFalse(s.isEmpty(), 'A stack with 3 items is not empty')
 
-        assert s.peek() == 'world'
-        item = s.pop()
-        assert item == 'world'
+        item1 = s.peek()
+        item2 = s.pop()
+        self.assertEqual(item1, 'world', 'The top item on the stack should be "world"')
+        self.assertEqual(item2, 'world', 'The top item on the stack should be "world"')
 
-        assert s.peek() == 'there'
-        item = s.pop()
-        assert item == 'there'
+        item1 = s.peek()
+        item2 = s.pop()
+        self.assertEqual(item1, 'there', 'The top item on the stack should be "there"')
+        self.assertEqual(item2, 'there', 'The top item on the stack should be "there"')
 
-        assert s.peek() == 'hello'
-        item = s.pop()
-        assert item == 'hello'
+        item1 = s.peek()
+        item2 = s.pop()
+        self.assertEqual(item1, 'hello', 'The top item on the stack should be "hello"')
+        self.assertEqual(item2, 'hello', 'The top item on the stack should be "hello"')
 
-        assert s.size() == 0
-        assert s.isEmpty() == True
+
+        self.assertEqual(s.size(), 0, 'All items should have been popped off the stack')
+        self.assertTrue(s.isEmpty(), 'The stack should be empty')
 
     def test_load(self):
         s = Stack()
@@ -92,6 +98,9 @@ class TestStack(object):
             s.push(i)
 
         for i in range(100, -1, -1):
-            assert s.peek() == i
-            assert s.pop() == i
+            self.assertEqual(s.peek(), i, 'Push 100 values and peek them should be the same')
+            self.assertEqual(s.pop(), i, 'Push 100 values and pop them should be the same')
 
+
+if __name__ == '__main__':
+    unittest.main()
