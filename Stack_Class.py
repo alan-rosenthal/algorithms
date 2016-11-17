@@ -4,6 +4,17 @@
 #
 #   Implements a Stack data structure.
 #
+#       .size()         Returns the number of items in the stack.
+#       .isEmpty()      Returns True if the stack is empty.
+#       .push(item)     Pushes the item onto the top of the stack.
+#       .pop()          Pops the item off the top of the stack
+#                           and returns it.
+#       .peek()         Returns the item on the top of the stack
+#                           and leaves it on the top of the stack.
+#       .clear()        Removes all items on the stack and leaves it empty.
+#       .dump()         For debugging, dumps the contents of the stack to 
+#                           standard out.
+#
 #   Alan Rosenthal
 #   October 2016
 #
